@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain, Tray, Menu, Notification, dialog } = require('electron');
 const path = require('path');
 const fs = require('fs');
+const { autoUpdater } = require('electron-updater');
 
 let mainWindow, tray;
 
@@ -86,6 +87,20 @@ ipcMain.handle('api-call', async (event, url) => {
         return { success: false, error: error.message };
     }
 });
+
+// Auto-updater setup (เฉพาะ production)
+if (!isDev) {
+    autoUpdater.checkForUpdatesAndNotify();
+
+    autoUpdater.on('update-available', () => {
+        console.log('Update available');
+    });
+
+    autoUpdater.on('update-downloaded', () => {
+        console.log('Update downloaded');
+        autoUpdater.quitAndInstall();
+    });
+}
 
 app.whenReady().then(createWindow);
 app.on('window-all-closed', () => {

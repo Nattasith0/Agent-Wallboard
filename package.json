@@ -1,17 +1,15 @@
 {
   "name": "agent-wallboard",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Real-time Agent Wallboard Desktop Application",
   "main": "main.js",
   "author": "Nattasith0",
   "license": "MIT",
   "homepage": "./",
-
   "repository": {
     "type": "git",
     "url": "https://github.com/Nattasith0/Agent-Wallboard.git"
   },
-
   "scripts": {
     "start": "electron .",
     "dev": "electron . --dev",
@@ -22,13 +20,14 @@
     "build-all": "electron-builder --win --mac --linux",
     "pack": "electron-builder --dir"
   },
-
   "devDependencies": {
     "electron": "^28.1.0",
     "electron-builder": "^24.9.1"
   },
-  "dependencies": {},
-
+  "dependencies": {
+    "electron-log": "^5.4.3",
+    "electron-updater": "^6.6.2"
+  },
   "build": {
     "appId": "com.yourcompany.agent-wallboard",
     "productName": "Agent Wallboard",
@@ -46,7 +45,10 @@
       "node_modules/**/*"
     ],
     "extraResources": [
-      { "from": "assets", "to": "assets" }
+      {
+        "from": "assets",
+        "to": "assets"
+      }
     ],
     "win": {
       "target": "nsis",
@@ -70,9 +72,12 @@
       "createStartMenuShortcut": true,
       "shortcutName": "Agent Wallboard"
     },
-
     "publish": [
-      { "provider": "github", "owner": "Nattasith0", "repo": "Agent-Wallboard" }
+      {
+        "provider": "github",
+        "owner": "Nattasith0",
+        "repo": "Agent-Wallboard"
+      }
     ]
   }
 }
