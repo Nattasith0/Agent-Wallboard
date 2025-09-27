@@ -1,6 +1,6 @@
 {
   "name": "agent-wallboard",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Real-time Agent Wallboard Desktop Application",
   "main": "main.js",
   "author": "Nattasith0",
